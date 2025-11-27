@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MINDEASE — CES 2026 · NEST</title>
+  <meta name="description" content="ECG-HRV 기반 상태·감정 시각화와 개인화 힐링모드로 정서 안정을 돕는 MINDEASE. CES 2026 Eureka Park 전시 안내." />
+  <style>
+    :root{
+      --bg:#ffffff; --card:#ffffff; --muted:#6b7280; --text:#111827; 
+      --brand:#2BBF9F; --brand2:#8FE3CF; --ok:#10B981;
+      --radius:16px; --shadow:0 8px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#ffffff 0%, #ffffff 65%, #EEF9F4 100%);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Helvetica, Arial}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(8px);z-index:10;border-bottom:1px solid rgba(17,24,39,.08)}
+    header .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 10px rgba(43,191,159,.5)}
+    .lang{display:flex;gap:10px}
+    .lang button{background:#1b1b24;border:1px solid rgba(255,255,255,.08);color:var(--text);padding:8px 12px;border-radius:999px;cursor:pointer}
+    .lang button.active{border-color:var(--brand)}
+    .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
+    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:.2em 0}
+    .hero p{color:var(--muted)}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .cta a{padding:12px 16px;border-radius:12px;border:1px solid rgba(17,24,39,.12);background:#F8FAFC}
+    .cta a.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#053B2E;font-weight:700}
+    .card{background:var(--card);border:1px solid rgba(17,24,39,.12);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .grid{display:grid;gap:18px}
+    .g-2{grid-template-columns:repeat(2,1fr)}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(17,24,39,.04);border:1px solid rgba(17,24,39,.12);color:var(--muted);font-size:14px}
+    section{margin:40px 0}
+    h2{margin:0 0 12px;font-size:clamp(22px,3vw,28px)}
+    .muted{color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:#14141c}
+    .list{margin:0;padding:0 0 0 18px}
+    .table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    .table tr{background:rgba(255,255,255,.035)}
+    .table td{padding:14px 16px}
+    .footer{color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.08);padding:20px 0;margin-top:40px}
+    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#000}
+    .callout{border-left:3px solid var(--brand);padding:10px 14px;background:rgba(255,77,166,.06);border-radius:10px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#171724;border:1px solid rgba(255,255,255,.1);padding:6px 10px;border-radius:999px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}.g-2{grid-template-columns:1fr}.g-3{grid-template-columns:1fr}}
+    /* Language toggles */
+    [data-lang="en"]{display:none}
+    .lang-en [data-lang="ko"]{display:none}
+    .lang-en [data-lang="en"]{display:block}
+  </style>
+  <meta property="og:title" content="MINDEASE — CES 2026 (Booth 63416)">
+  <meta property="og:description" content="Connect Bio‑Feedback HUB — ECG‑HRV insights, Healing Mode. Venetian Expo · Hall G · Eureka Park · 63416">
+  <meta property="og:image" content="https://nest-industry.co.kr/theme/nest/img/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo"><span class="dot"></span> <span>MINDEASE</span></div>
+      <nav class="lang">
+        <button id="btn-ko" class="active">한국어</button>
+        <button id="btn-en">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="app">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="badge" data-lang="ko">CES 2026 · Eureka Park · K-Startup</span>
+        <span class="badge" data-lang="en">CES 2026 · Eureka Park · K-Startup</span>
+        <h1 data-lang="ko">Connect Bio‑Feedback HUB — ECG‑HRV로 상태·감정 인사이트, 힐링모드 체험</h1>
+        <h1 data-lang="en">Connect Bio‑Feedback HUB — HRV insights & personalized Healing Mode</h1>
+        <p class="muted" data-lang="ko">MINDEASE는 ECG 스마트 패치와 RENST 앱을 페어링해 자율신경 균형 관리에 도움을 주는 웰니스 솔루션입니다.</p>
+        <p class="muted" data-lang="en">MINDEASE pairs the Mind Patch with the RENST app to help balance your autonomic nervous system (wellness/information).</p>
+        <div class="cta">
+          <a href="#demo" class="primary" data-lang="ko">부스 데모 보기</a>
+          <a href="#demo" class="primary" data-lang="en">See Live Demo</a>
+          <a href="#meet" data-lang="ko">미팅 예약</a>
+          <a href="#meet" data-lang="en">Book a Meeting</a>
+          <a href="#downloads" data-lang="ko">브로슈어 다운로드</a>
+          <a href="#downloads" data-lang="en">Download Brochure</a>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <!-- Replace src with your YouTube/Vimeo embed or local MP4 poster -->
+        <iframe class="video" src="" title="MINDEASE video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="muted" style="margin-top:10px" data-lang="ko">* 홍보 영상을 넣으려면 iframe src에 링크를 추가하세요.</div>
+        <div class="muted" style="margin-top:10px" data-lang="en">* Add your promo video URL to the iframe src above.</div>
+      </div>
+    </section>
+
+    <!-- EXHIBIT/USP -->
+    <section id="exhibit" class="grid g-3">
+      <div class="card" style="padding:18px">
+        <h2 data-lang="ko">출품제품: MINDEASE</h2>
+        <h2 data-lang="en">Exhibit: MINDEASE</h2>
+        <p class="muted" data-lang="ko">저지연 BLE 스트리밍 기반 ECG/HR 수집, 실시간 HRV 인사이트, 개인화 힐링모드(음원·호흡 가이드).</p>
+        <p class="muted" data-lang="en">Low‑latency BLE ECG/HR streaming, real‑time HRV insights, and personalized Healing Mode (audio/breathing).</p>
+      </div>
+      <div class="card" style="padding:18px">
+        <h2 data-lang="ko">핵심 USP</h2>
+        <h2 data-lang="en">Key USPs</h2>
+        <ul class="list">
+          <li data-lang="ko"><b>개인화 엔진</b>: 초기 24시간 학습 → 개인 기준 기반 인사이트</li>
+          <li data-lang="en"><b>Personalization</b>: 24‑hour bootstrapping → individual baseline insights</li>
+          <li data-lang="ko"><b>경량 전송</b>: 이벤트 기반 패킷 전송으로 지연·배터리 최적화</li>
+          <li data-lang="en"><b>Lightweight streaming</b>: event‑driven packets for latency & battery</li>
+          <li data-lang="ko"><b>보안</b>: AES‑256 저장, TLS 1.2+ 전송, 온디바이스 필터링</li>
+          <li data-lang="en"><b>Security</b>: AES‑256 at rest, TLS 1.2+ in transit, on‑device filtering</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:18px">
+        <h2 data-lang="ko">데이터/협력</h2>
+        <h2 data-lang="en">Data/Collab</h2>
+        <p class="muted" data-lang="ko">ETRI 공공데이터(2018–2019) + <b>건양대학교(NEST)</b> 임상 데이터로 Transfer Learning·Fine‑tuning 적용.</p>
+        <p class="muted" data-lang="en">Transfer learning on ETRI public data (2018–2019) and fine‑tuning with <b>Konyang Univ. (NEST)</b> clinical data.</p>
+      </div>
+    </section>
+
+    <!-- LIVE DEMO -->
+    <section id="demo" class="card" style="padding:22px">
+      <h2 data-lang="ko">현장 데모</h2>
+      <h2 data-lang="en">Live Demo</h2>
+      <div class="row">
+        <span class="chip" data-lang="ko">센서 페어링 & 실시간 대시보드</span>
+        <span class="chip" data-lang="en">Sensor pairing & real‑time dashboard</span>
+        <span class="chip" data-lang="ko">힐링모드 체험(음원·호흡)</span>
+        <span class="chip" data-lang="en">Healing Mode (audio/breath)</span>
+        <span class="chip" data-lang="ko">디바이스 호환/API 개요</span>
+        <span class="chip" data-lang="en">Device compatibility & API overview</span>
+      </div>
+      <div class="callout" style="margin-top:14px">
+        <div data-lang="ko">부스: <b>Venetian Expo · Hall G · Eureka Park · 부스 63416</b> · <a href="https://nest-industry.co.kr/" target="_blank" rel="noopener">NEST 공식 홈페이지</a></div>
+        <div data-lang="en">Booth: <b>Venetian Expo · Hall G · Eureka Park · Booth 63416</b> · <a href="https://nest-industry.co.kr/" target="_blank" rel="noopener">Official Site</a></div>
+      </div>
+    </section>
+
+    <!-- IR PITCH -->
+    <section id="ir" class="card" style="padding:22px">
+      <h2 data-lang="ko">IR 피칭 일정 (1/6–1/8)</h2>
+      <h2 data-lang="en">IR Pitch Schedule (Jan 6–8)</h2>
+      <table class="table">
+        <tr><td>Day 1</td><td data-lang="ko">세션 시간: TBD · 장소: K‑Startup Stage</td><td data-lang="en">Session time: TBD · Venue: K‑Startup Stage</td></tr>
+        <tr><td>Day 2</td><td data-lang="ko">세션 시간: TBD · 장소: K‑Startup Stage</td><td data-lang="en">Session time: TBD · Venue: K‑Startup Stage</td></tr>
+        <tr><td>Day 3</td><td data-lang="ko">세션 시간: TBD · 장소: K‑Startup Stage</td><td data-lang="en">Session time: TBD · Venue: K‑Startup Stage</td></tr>
+      </table>
+      <div id="meet" class="cta" style="margin-top:8px">
+        <a href="#" class="primary" data-lang="ko">미팅 예약(캘린더 링크)</a>
+        <a href="#" class="primary" data-lang="en">Book a meeting (Calendar)</a>
+        <a href="#contact" data-lang="ko">담당자 연락처</a>
+        <a href="#contact" data-lang="en">Contact</a>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section id="downloads" class="grid g-2">
+      <div class="card" style="padding:22px">
+        <h2 data-lang="ko">브로슈어</h2>
+        <h2 data-lang="en">Brochure</h2>
+        <div class="row">
+          <a class="pill" href="./brochure_ko.pdf" download data-lang="ko">한국어 PDF</a>
+          <a class="pill" href="./brochure_en.pdf" download data-lang="en">Brochure (EN)</a>
+        </div>
+        <p class="muted" style="margin-top:8px" data-lang="ko">파일명을 유지하고 PDF만 교체하면 링크가 그대로 작동합니다.</p>
+        <p class="muted" style="margin-top:8px" data-lang="en">Keep filenames; replace the PDFs to keep links intact.</p>
+      </div>
+      <div class="card" style="padding:22px">
+        <h2 data-lang="ko">미디어 키트</h2>
+        <h2 data-lang="en">Media Kit</h2>
+        <div class="row">
+          <a class="pill" href="#" data-lang="ko">로고/제품 사진 다운로드</a>
+          <a class="pill" href="#" data-lang="en">Logos & photos</a>
+        </div>
+        <p class="muted" data-lang="ko">Zip 파일 링크를 연결해 주세요.</p>
+        <p class="muted" data-lang="en">Point this to a .zip with brand assets.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" style="padding:22px">
+      <h2 data-lang="ko">연락처</h2>
+      <h2 data-lang="en">Contact</h2>
+      <div class="grid g-2">
+        <div>
+          <p><b>NEST</b><br />Venetian Expo · Hall G · Eureka Park (K‑Startup) · Booth <b>63416</b></p>
+          <p data-lang="ko">주소: 경상북도 구미시 대학로 61 금오공과대학교 벤처창업관 306호</p>
+          <p data-lang="en">Address: Room 306, Venture Startup Building, Kumoh National Institute of Technology, 61 Daehak‑ro, Gumi‑si, Gyeongsangbuk‑do, 39177, South Korea</p>
+          <p>Phone: +82‑10‑3342‑4517 · Email: <a href="mailto:swjang.nest@gmail.com">swjang.nest@gmail.com</a></p>
+          <p><a href="https://www.nest-industry.co.kr" target="_blank" rel="noopener">www.nest-industry.co.kr</a></p>
+        </div>
+        <div>
+          <p class="muted" data-lang="ko">규제 고지: 본 페이지의 웰니스 기능 설명은 정보 제공을 위한 것입니다. 의료적 진단·치료·예방의 효능을 주장하지 않습니다.</p>
+          <p class="muted" data-lang="en">Regulatory notice: Wellness features are for information only. No claims of diagnosis, treatment, or prevention.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap" style="padding:0">
+        <div class="muted">© 2025 NEST. All rights reserved.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Simple language toggle
+    const root = document.documentElement; 
+    const btnKo = document.getElementById('btn-ko');
+    const btnEn = document.getElementById('btn-en');
+    const setLang = (lang) => {
+      if(lang==='en') {
+        document.body.classList.add('lang-en');
+        btnEn.classList.add('active'); btnKo.classList.remove('active');
+      } else {
+        document.body.classList.remove('lang-en');
+        btnKo.classList.add('active'); btnEn.classList.remove('active');
+      }
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    btnKo.addEventListener('click',()=>setLang('ko'));
+    btnEn.addEventListener('click',()=>setLang('en'));
+  </script>
+</body>
+</html>
